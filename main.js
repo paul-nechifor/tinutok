@@ -10,18 +10,20 @@ function main() {
   ctx.fillRect(0, 0, width, height);
   ctx.lineWidth = 1;
 
-  drawThread(ctx);
+
+  var characterSet = buildCharacterSet();
+
+  drawThread(characterSet, ctx, 50, 0);
 }
 
-function drawThread(ctx) {
+function drawThread(characterSet, ctx, sx, sy) {
   var string = randomText(6, 4);
-  var characterSet = buildCharacterSet();
   var text = new Text(characterSet, 500, string);
 
   var spline = text.getSpline();
-  spline.draw(ctx, 50, 10, 10);
+  spline.draw(ctx, sx, sy, 10);
 
-  var walker = new BezierSplineWalker(spline, 0.5, 50, 10, 10);
+  var walker = new BezierSplineWalker(spline, 0.5, sx, sy, 10);
 
   var sWalker = new BezierSplineSpeedWalker(walker);
   var morePoints = true;
