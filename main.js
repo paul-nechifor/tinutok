@@ -27,9 +27,17 @@ function drawThread(ctx) {
   var morePoints = true;
 
   function doNextPoint() {
+    morePoints = drawPoints(ctx, sWalker, 5);
     if (morePoints) {
       setTimeout(doNextPoint, 0);
     }
+  }
+
+  doNextPoint();
+}
+
+function drawPoints(ctx, sWalker, times) {
+  for (var i = 0; i < times; i++) {
     var x = sWalker.x;
     var y = sWalker.y;
     var len = 4;
@@ -40,8 +48,11 @@ function drawThread(ctx) {
     ctx.lineTo(x+len, y+len);
     ctx.stroke();
 
-    morePoints = sWalker.advanceBy(0.5);
+    var morePoints = sWalker.advanceBy(0.5);
+    if (!morePoints) {
+      return false;
+    }
   }
 
-  doNextPoint();
+  return true;
 }
