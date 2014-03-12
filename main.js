@@ -6,19 +6,19 @@ function main() {
 
   canvas.setAttribute("width", width);
   canvas.setAttribute("height", height);
-  ctx.fillStyle = '#EEEEEE';
+  ctx.fillStyle = '#d7aa5f';
   ctx.fillRect(0, 0, width, height);
   ctx.lineWidth = 1;
+  ctx.strokeStyle = '#b84d3f';
 
 
   var characterSet = buildCharacterSet();
 
-  var nThreads = 6;
-  var separation = 100;
+  var nThreads = 13;
+  var separation = 132;
 
   for (var i = 0; i < nThreads; i++) {
-    var start = Math.random() * -50 - 100;
-    drawThread(characterSet, ctx, 50 + i * separation, start);
+    drawThread(characterSet, ctx, 140 + i * separation, 50);
   }
 }
 
@@ -27,7 +27,7 @@ function drawThread(characterSet, ctx, sx, sy) {
   var text = new Text(characterSet, 500, string);
 
   var spline = text.getSpline();
-  spline.draw(ctx, sx, sy, 10);
+  //spline.draw(ctx, sx, sy, 10);
 
   var walker = new BezierSplineWalker(spline, 0.5, sx, sy, 10);
 
@@ -35,7 +35,7 @@ function drawThread(characterSet, ctx, sx, sy) {
   var morePoints = true;
 
   function doNextPoint() {
-    morePoints = drawPoints(ctx, sWalker, 5);
+    morePoints = drawPoints(ctx, sWalker, 9);
     if (morePoints) {
       setTimeout(doNextPoint, 0);
     }
