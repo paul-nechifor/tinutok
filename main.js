@@ -13,7 +13,13 @@ function main() {
 
   var characterSet = buildCharacterSet();
 
-  drawThread(characterSet, ctx, 50, 0);
+  var nThreads = 6;
+  var separation = 100;
+
+  for (var i = 0; i < nThreads; i++) {
+    var start = Math.random() * -50 - 100;
+    drawThread(characterSet, ctx, 50 + i * separation, start);
+  }
 }
 
 function drawThread(characterSet, ctx, sx, sy) {
