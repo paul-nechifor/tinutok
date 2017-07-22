@@ -18,15 +18,15 @@ BezierSplineBuilder.prototype.build = function () {
             v[i+2], v[i+3],
             v[i+4], v[i+5]
         );
-            
+
         length += lengths[k];
-        
+
         height += v[i + 5];
     }
-    
+
     var typedArray = new Float64Array(v);
     var typedLengths = new Float64Array(lengths);
-    
+
     return new BezierSpline(typedArray, length, typedLengths, height);
 };
 
@@ -38,7 +38,7 @@ BezierSplineBuilder.prototype.addMatchingCubic = function (c2x, c2y, tx, ty) {
     if (this.array.length === 0) {
         throw "Cannot be first";
     }
-    
+
     var v = this.array;
     var n = v.length;
     v.push(v[n-2]-v[n-4], v[n-1]-v[n-3], c2x, c2y, tx, ty);

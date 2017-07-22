@@ -5,5 +5,4 @@ function Space(height, isInReverse) {
 }
 
 Space.prototype.putInChain = function (array, lengths, pointsOffset) {
-    
 };

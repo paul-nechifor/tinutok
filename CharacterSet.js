@@ -5,7 +5,7 @@ function CharacterSet(topTurner, bottomTurner, turnerHeight, turnerWidth,
     this.turnerHeight = turnerHeight;
     this.turnerWidth = turnerWidth;
     this.minimumSpace = minimumSpace;
-    
+
     this.characters = {};
     this.revCharacters = {};
     this.transitions = {};
